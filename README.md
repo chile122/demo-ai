@@ -24,7 +24,7 @@ accessible-ai-web-demo/
 ├── index.html                 # Trang chính của ứng dụng
 ├── /assets
 │   ├── style.css              # CSS cho giao diện người dùng
-│   ├── /images                # Thư mục chứa ảnh minh họa (nếu có)
+│   ├── /images                # Thư mục chứa ảnh minh họa
 ├── /js
 │   ├── object-detection.js    # Module xử lý phát hiện đối tượng
 │   ├── ocr.js                 # Module xử lý OCR
@@ -32,7 +32,6 @@ accessible-ai-web-demo/
 │   ├── text-to-speech.js      # Module xử lý đọc văn bản
 │   └── main.js                # Module chính, khởi tạo và điều phối
 ├── README.md                  # Tài liệu hướng dẫn
-├── LICENSE                    # Giấy phép sử dụng
 └── .gitignore                 # Cấu hình Git
 ```
 
@@ -47,6 +46,8 @@ accessible-ai-web-demo/
 ```bash
 # Nếu bạn đã cài Python 3:
 python -m http.server
+hoặc
+npx http-server
 
 # Sau đó truy cập http://localhost:8000
 ```
