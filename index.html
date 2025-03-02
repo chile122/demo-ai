@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo AI toàn diện</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Demo Công nghệ AI trong Ứng dụng Web</h1>
+    
+    <div class="tab-container">
+      <div class="tab active" data-tab="ObjectDetection">Phát hiện đối tượng (AI)</div>
+      <div class="tab" data-tab="TextExtraction">Trích xuất văn bản (OCR)</div>
+      <div class="tab" data-tab="SpeechToText">Nhận dạng giọng nói</div>
+      <div class="tab" data-tab="TextToSpeech">Đọc văn bản</div>
+    </div>
+    
+    <div class="info">
+      <p><strong>Công nghệ sử dụng:</strong></p>
+      <ul>
+        <li><strong>TensorFlow.js + COCO-SSD:</strong> Phát hiện đối tượng trong hình ảnh</li>
+        <li><strong>Tesseract.js:</strong> Trích xuất văn bản từ hình ảnh (OCR)</li>
+        <li><strong>Web Speech API:</strong> Nhận dạng giọng nói & chuyển văn bản thành giọng nói</li>
+      </ul>
+    </div>
+    
+    <!-- Tab phát hiện đối tượng -->
+    <div id="tabObjectDetection" class="tab-content active">
+      <h2>Phát hiện đối tượng trong hình ảnh</h2>
+      <input type="file" id="imageInput" accept="image/*">
+      <button id="detectButton">Phát hiện đối tượng</button>
+      <button id="speakDetectionButton">Đọc kết quả</button>
+      <p class="status" id="aiStatus">Tải lên một hình ảnh để bắt đầu</p>
+      <div id="imageContainer">
+        <img id="preview" src="" alt="">
+      </div>
+      <div id="aiResult" class="result-box">
+        <p>Kết quả phát hiện đối tượng sẽ xuất hiện ở đây</p>
+      </div>
+    </div>
+    
+    <!-- Tab trích xuất văn bản -->
+    <div id="tabTextExtraction" class="tab-content">
+      <h2>Trích xuất văn bản từ hình ảnh</h2>
+      <input type="file" id="ocrImageInput" accept="image/*">
+      <button id="ocrButton">Trích xuất văn bản</button>
+      <button id="speakOcrButton">Đọc văn bản</button>
+      <p class="status" id="ocrStatus">Tải lên một hình ảnh để bắt đầu</p>
+      <div id="progressBar"></div>
+      <img id="ocrPreview" src="" alt="">
+      <div id="ocrResult" class="result-box">
+        <p>Văn bản trích xuất sẽ xuất hiện ở đây</p>
+      </div>
+    </div>
+    
+    <!-- Tab nhận dạng giọng nói -->
+    <div id="tabSpeechToText" class="tab-content">
+      <h2>Nhận dạng giọng nói</h2>
+      <select id="speechLanguage" class="language-select">
+        <option value="vi-VN">Tiếng Việt</option>
+        <option value="en-US">English (US)</option>
+        <option value="fr-FR">Français</option>
+        <option value="ja-JP">日本語</option>
+        <option value="zh-CN">中文 (简体)</option>
+      </select>
+      <button id="startSpeechBtn" class="record-button">
+        <span class="mic-icon">🎤</span> Bắt đầu ghi âm
+        <div class="waves">
+          <span class="wave"></span><span class="wave"></span><span class="wave"></span>
+          <span class="wave"></span><span class="wave"></span>
+        </div>
+      </button>
+      <p class="status" id="speechStatus">Nhấn nút để bắt đầu nói</p>
+      <div id="transcript" class="result-box">
+        <p>Văn bản được nhận dạng sẽ xuất hiện ở đây</p>
+      </div>
+      <button id="copyTranscriptBtn">Sao chép</button>
+      <button id="clearTranscriptBtn">Xóa</button>
+      <button id="speakTranscriptBtn">Đọc</button>
+    </div>
+    
+    <!-- Tab đọc văn bản -->
+    <div id="tabTextToSpeech" class="tab-content">
+      <h2>Đọc văn bản</h2>
+      <select id="ttsLanguage" class="language-select">
+        <option value="vi-VN">Tiếng Việt</option>
+        <option value="en-US">English (US)</option>
+        <option value="fr-FR">Français</option>
+        <option value="ja-JP">日本語</option>
+        <option value="zh-CN">中文 (简体)</option>
+      </select>
+      <select id="ttsVoice" class="language-select">
+        <option value="">-- Giọng mặc định --</option>
+      </select>
+      <div>
+        <label>Tốc độ: <span id="rateValue">1</span></label>
+        <input type="range" id="ttsRate" min="0.5" max="2" value="1" step="0.1">
+      </div>
+      <textarea id="ttsText" rows="6" placeholder="Nhập văn bản để đọc...">Xin chào! Đây là demo chuyển văn bản thành giọng nói.</textarea>
+      <button id="speakButton">Đọc</button>
+      <button id="pauseButton">Tạm dừng</button>
+      <button id="resumeButton">Tiếp tục</button>
+      <button id="stopButton">Dừng</button>
+      <p class="status" id="ttsStatus">Nhập văn bản và nhấn nút để nghe</p>
+    </div>
+  </div>
+
+  <!-- Tải thư viện -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.1.1/dist/tesseract.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+  
+  <!-- Tải JavaScript modules -->
+  <script src="js/object-detection.js"></script>
+  <script src="js/ocr.js"></script>
+  <script src="js/speech-to-text.js"></script>
+  <script src="js/text-to-speech.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

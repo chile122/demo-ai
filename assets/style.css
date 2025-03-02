@@ -1,0 +1,209 @@
+/* Base styles */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Container layout */
+.container {
+    text-align: center;
+}
+
+/* Tab navigation styling */
+.tab-container {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    flex-wrap: wrap;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    background: #f1f1f1;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.tab.active {
+    background: #fff;
+    border-bottom-color: white;
+    font-weight: bold;
+}
+
+/* Tab content styling */
+.tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-top: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Image and UI elements */
+img {
+    max-width: 100%;
+    max-height: 400px;
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px 16px;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #357ae8;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Results containers */
+.result-box {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    min-height: 100px;
+    text-align: left;
+}
+
+/* Progress bar */
+#progressBar {
+    width: 0%;
+    height: 20px;
+    background-color: #4CAF50;
+    margin: 10px 0;
+    display: none;
+}
+
+/* Status messages */
+.status {
+    color: #f0ad4e;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Object detection boxes */
+.object-box {
+    position: absolute;
+    border: 2px solid lime;
+    background-color: rgba(0, 255, 0, 0.2);
+}
+
+.object-label {
+    position: absolute;
+    background-color: lime;
+    color: black;
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+#imageContainer {
+    position: relative;
+    display: inline-block;
+    margin: 10px auto;
+}
+
+/* Info panel */
+.info {
+    background-color: #e9f7fe;
+    border-left: 4px solid #2196F3;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+}
+
+/* Text input */
+textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Speech recognition UI */
+.mic-icon {
+    font-size: 24px;
+    margin-right: 8px;
+}
+
+.record-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.record-button.recording {
+    background-color: #f44336;
+}
+
+.language-select {
+    padding: 8px;
+    margin: 10px 0;
+}
+
+/* Audio visualization waves */
+.wave {
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    margin: 0 1px;
+    background-color: #fff;
+    animation: wave 1s infinite ease-in-out;
+    border-radius: 2px;
+}
+
+@keyframes wave {
+
+    0%,
+    100% {
+        transform: scaleY(0.3);
+    }
+
+    50% {
+        transform: scaleY(1);
+    }
+}
+
+.waves {
+    display: none;
+    margin-left: 10px;
+}
+
+.waves .wave:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.waves .wave:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.waves .wave:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.waves .wave:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.recording .waves {
+    display: inline-block;
+}
