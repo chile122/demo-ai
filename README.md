@@ -1,6 +1,6 @@
 # Demo Công nghệ AI trong Ứng dụng Web
 
-Dự án này trình diễn các công nghệ AI sẵn có trong trình duyệt web hiện đại, bao gồm phát hiện đối tượng trong hình ảnh, nhận dạng ký tự quang học (OCR), nhận dạng giọng nói và chuyển văn bản thành giọng nói.
+Dự án này trình diễn các công nghệ AI sẵn có trong trình duyệt web hiện tại, bao gồm phát hiện đối tượng trong hình ảnh, nhận dạng ký tự quang học (OCR), nhận dạng giọng nói và chuyển văn bản thành giọng nói.
 
 ## Tính năng
 
